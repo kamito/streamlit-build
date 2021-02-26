@@ -1,14 +1,16 @@
 steps:
-  - name: gcr.io/cloud-builders.docker
+  - name: gcr.io/cloud-builders/docker
     args:
-      - build
-      - "--no-cache"
-      - "-t"
-      - "$_GCR_HOSTNAME/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA"
-      - .
-      - "-f"
-      - Dockerfile
-    volumes:
-      - name: "dist"
-        path: "/dist"
+      - run
+      - "-it"
+      - "--rm"
+      - "$_GCR_HOSTNAME/$PROJECT_ID/streamlit-healthz:0.0.1"
+      - "-v"
+      - "/workspace/dist:/tmp/streamlit/lib/dist"
+      - /bin/bash
+      - build.sh
     id: Build
+artifacts:
+  objects:
+    location: "gs://gn-streamlit-archive/20210226001/"
+    paths: ["/workspace/dist/*"]
