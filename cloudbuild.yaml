@@ -6,7 +6,7 @@ steps:
       - "/workspace/dist:/tmp/streamlit/lib/dist"
       - "gcr.io/blocks-gn-kamito/streamlit-healthz:0.0.1"
       - /bin/bash
-      - build.sh
+      - /tmp/package.sh
     id: Build
 artifacts:
   objects:
