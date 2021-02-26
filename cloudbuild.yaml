@@ -2,8 +2,6 @@ steps:
   - name: gcr.io/cloud-builders/docker
     args:
       - run
-      - "-it"
-      - "--rm"
       - "-v"
       - "/workspace/dist:/tmp/streamlit/lib/dist"
       - "gcr.io/blocks-gn-kamito/streamlit-healthz:0.0.1"
