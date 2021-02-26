@@ -4,13 +4,14 @@ steps:
       - run
       - "-it"
       - "--rm"
-      - "$_GCR_HOSTNAME/$PROJECT_ID/streamlit-healthz:0.0.1"
       - "-v"
       - "/workspace/dist:/tmp/streamlit/lib/dist"
+      - "gcr.io/blocks-gn-kamito/streamlit-healthz:0.0.1"
       - /bin/bash
       - build.sh
     id: Build
 artifacts:
   objects:
     location: "gs://gn-streamlit-archive/20210226001/"
-    paths: ["/workspace/dist/*"]
+    paths:
+      - "/workspace/dist/*"
