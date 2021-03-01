@@ -8,7 +8,7 @@ steps:
       - /bin/bash
       - /tmp/streamlit/package.sh
     id: Build
-timeout: 3600s
+timeout: 7200s
 artifacts:
   objects:
     location: "gs://gn-streamlit-archive/20210226001/"
